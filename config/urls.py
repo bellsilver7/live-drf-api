@@ -13,40 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers, serializers, viewsets
-
-from live.models import Program
-
-
-# Serializers define the API representation.
-class ProgramSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Program
-        fields = [
-            'id',
-            'title',
-            'description',
-            'thumbnail',
-            'stream_status',
-            'stream_scheduled_at',
-            'created_at',
-            'updated_at',
-        ]
-
-
-# ViewSets define the view behavior.
-class ProgramViewSet(viewsets.ModelViewSet):
-    queryset = Program.objects.all()
-    serializer_class = ProgramSerializer
-
-
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'programs', ProgramViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
+    path('admin/', admin.site.urls),
+    path('api/', include('live.urls')),
 ]
