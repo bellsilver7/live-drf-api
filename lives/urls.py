@@ -1,10 +1,10 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from live import views
+from lives.views import ProgramViewSet
 
 router = routers.DefaultRouter()
-router.register('programs', views.ProgramViewSet)
+router.register('programs', ProgramViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
