@@ -38,7 +38,8 @@ DJANGO_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + [
     'rest_framework',
-    'lives'
+    'django_seed',
+    'lives',
 ]
 
 MIDDLEWARE = [
