@@ -20,4 +20,17 @@ class Program(models.Model):
     stream_status = models.CharField(choices=STREAM_STATUS_CHOICES, default='upcoming', max_length=100)
     stream_scheduled_at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
+
+class Host(models.Model):
+    program = models.ForeignKey(
+        Program,
+        verbose_name="방송",
+        on_delete=models.CASCADE,
+    )
+    name = models.CharField(max_length=30)
+    short_description = models.TextField()
+    profile_image = models.ImageField(null=True, upload_to='profiles/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
