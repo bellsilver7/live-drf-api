@@ -35,12 +35,14 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
-INSTALLED_APPS = DJANGO_APPS + [
+THIRD_PARTY_APPS = [
     'rest_framework',
     'django_seed',
+]
+PROJECT_APPS = [
     'lives',
 ]
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
